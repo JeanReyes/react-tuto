@@ -1,0 +1,33 @@
+    
+<div class="row mt-4">
+    {{#each tareas}}
+    <div class="col-md-3 mb-2">
+        <div class="card">
+            <div class="card-body"> 
+                <h4 class="card-title d-flex justify-content-between align-items-center">
+                    {{nombre}} <a href="/notas/edit/{{_id}}"><i class="fas fa-edit"></i></a>
+                </h4>
+                <p>
+                    {{descripcion}}
+                </p>
+                <form action="/notas/delete/{{_id}}?_method=DELETE" method="POST">
+                    <input type="hidden" name="_method" value="DELETE"> 
+                    <button class="btn btn-danger btn-block btn-sm" type="submit">
+                        Borrar
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {{else}}
+    <div class="card mx-auto">
+        <div class="card-body">
+            <h2>Hola {{user.nombre}}</h2>
+            <p class="lead">No exiten notas aun</p>
+            <a href="/tareas" class="btn btn-success btn-block">
+                Agregar
+            </a>
+        </div>
+    </div>
+    {{/each}}
+</div>
